@@ -63,9 +63,37 @@ void agent::decide() {
 }
 
 void agent::act() {
-	if (action=="random")
-		pull.arm
-	else
+	if (action == "random") {																											// pull a random arm, exploration
+		decide = rand() % 3;
+		if (decide == 1)
+			pull.arm_a;
+		if (decide == 2)
+			pull.arm_b;
+		if (decide == 3)
+			pull.arm_c;
+		else
+			assert(1 == 0);
+	}
+		
+	else {																																	// pick greatest value
+		if ((V_t.arm_a > V_t.arm_b) && (V_t.arm_a > V_t.arm_c))
+			pull.arm_a;
+		if ((V_t.arm_b > V_t.arm_a) && (V_t.arm_b > V_t.arm_c))
+			pull.arm_b;
+		if ((V_t.arm_c > V_t.arm_a) && (V_t.arm_c > V_t.arm_b))
+			pull.arm_c;
+		else {
+			if (decide == 1)
+				pull.arm_a;
+			if (decide == 2)
+				pull.arm_b;
+			if (decide == 3)
+				pull.arm_c;
+			else
+				assert(1 == 0);
+		}
+
+	}
 
 }
 
