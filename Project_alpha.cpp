@@ -42,8 +42,16 @@ double generateGaussianNoise(double mu, double sigma)																					// tak
 	return z0 * sigma + mu;
 }
 
+double average() {
+
+};
+
+double stdev() {
+
+};
+
 class agent {
-public:
+public:																																	// learner
 	void init();
 	void decide();
 	void act();
@@ -63,32 +71,52 @@ void agent::decide() {
 }
 
 void agent::act() {
+	int arm_pulled = 0;
 	if (action == "random") {																											// pull a random arm, exploration
-		decide = rand() % 3;
-		if (decide == 1)
+		decide = rand() % 3 + 1;
+		if (decide == 1) {																												// if random number = 1, first arm pulled
 			pull.arm_a;
-		if (decide == 2)
+			arm_pulled = 1;
+		}
+		if (decide == 2) {																												// if random number = 2, second arm pulled
 			pull.arm_b;
-		if (decide == 3)
+			arm_pulled = 2;
+		}
+		if (decide == 3) {																												// if random number = 3, third arm pulled
 			pull.arm_c;
+			arm_pulled = 3;
+		}
 		else
-			assert(1 == 0);
+			assert(1 == 0);																												// something went wrong!
 	}
 		
 	else {																																	// pick greatest value
-		if ((V_t.arm_a > V_t.arm_b) && (V_t.arm_a > V_t.arm_c))
+		if ((V_t.arm_a > V_t.arm_b) && (V_t.arm_a > V_t.arm_c)) {																		// if arm 1 > 2 and 3
 			pull.arm_a;
-		if ((V_t.arm_b > V_t.arm_a) && (V_t.arm_b > V_t.arm_c))
+			arm_pulled = 1;
+		}
+		if ((V_t.arm_b > V_t.arm_a) && (V_t.arm_b > V_t.arm_c)) {																		// if arm 2 > 1 and 3
 			pull.arm_b;
-		if ((V_t.arm_c > V_t.arm_a) && (V_t.arm_c > V_t.arm_b))
+			arm_pulled = 2;
+		}
+		if ((V_t.arm_c > V_t.arm_a) && (V_t.arm_c > V_t.arm_b)) {																		// if arm 3 > 1 and 2
 			pull.arm_c;
-		else {
-			if (decide == 1)
+			arm_pulled = 3;
+
+		}
+		else {																															// for first pull, if epsilon is not random (this is a hard coded action)
+			if (decide == 1) {
 				pull.arm_a;
-			if (decide == 2)
+				arm_pulled = 1;
+			}
+			if (decide == 2) {
 				pull.arm_b;
-			if (decide == 3)
+				arm_pulled = 2;
+			}
+			if (decide == 3) {
 				pull.arm_c;
+				arm_pulled = 3;
+			}
 			else
 				assert(1 == 0);
 		}
@@ -98,12 +126,22 @@ void agent::act() {
 }
 
 void agent::react() {
+	if (arm_pulled = 1) {
 
+	}
+	if (arm_pulled = 2) {
+
+	}
+	if (arm_pulled = 3) {
+
+	}
 }
 
 class arm {
+public:
 	void init();
 	void pull();
+	void update();
 };
 
 void arm::init() {
@@ -116,7 +154,12 @@ void arm::pull() {
 	reward = generateGaussianNoise(mu, sigma)
 }
 
+void arm::update() {
+	V_t = reward*alpha + V_t*(1 - alpha);
+}
+
 class MAB {
+public:
 	void init();
 };
 
