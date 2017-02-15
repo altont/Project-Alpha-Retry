@@ -1,0 +1,7 @@
+﻿  ConsoleApplication11.cpp
+c:\users\alton\documents\me 493\consoleapplication11\consoleapplication11\consoleapplication11.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\alton\documents\me 493\consoleapplication11\consoleapplication11\consoleapplication11.cpp(56): warning C4018: '<': signed/unsigned mismatch
+c:\users\alton\documents\me 493\consoleapplication11\consoleapplication11\consoleapplication11.cpp(74): warning C4101: 'epsilon': unreferenced local variable
+c:\users\alton\documents\me 493\consoleapplication11\consoleapplication11\consoleapplication11.cpp(89): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ConsoleApplication11.vcxproj -> C:\Users\Alton\Documents\ME 493\ConsoleApplication11\Debug\ConsoleApplication11.exe
+  ConsoleApplication11.vcxproj -> C:\Users\Alton\Documents\ME 493\ConsoleApplication11\Debug\ConsoleApplication11.pdb (Full PDB)
